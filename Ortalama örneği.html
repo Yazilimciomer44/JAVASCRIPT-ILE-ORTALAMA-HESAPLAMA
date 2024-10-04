@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .kirmizi{
+            background-color: red;
+            color:white;
+        }
+        .yesil{
+            background-color: green;
+            color:white;
+        }
+        .kahve{
+            background-color: brown;
+            color:white
+        }
+        .sari{
+            background-color: yellow;
+            color: black;
+        }
+        .turuncu{
+            background-color: orange;
+            color:white;
+        }
+        #sonuc{
+            font-size: 20px;
+            text-align:center ;
+        }
+    </style>
+</head>
+<body>
+    <label for="">Not1</label>
+    <input type="text" name="not1" id="not1"> <br>
+    <label for="">Not2</label>
+    <input type="text" name="not2" id="not2"> <br>
+    <label for="">Not3</label>
+    <input type="text" name="not3" id="not3"> <br>
+    <button onclick="hesapla()">Hesapla</button>
+    <div id="ortalama"></div>
+    <div id="sonuc"></div>
+    <script>
+        function hesapla(){
+            let n1,n2,ortalama,durum="";
+            n1=parseFloat(document.getElementById("not1").value);
+            n2=parseFloat(document.getElementById("not2").value);
+            n3=parseFloat(document.getElementById("not3").value);
+            ortalama=(n1+n2+n3)/3;
+            document.getElementById("ortalama").innerHTML="Ortalamanız:"+ortalama;
+            if(0<=ortalama && ortalama<50){
+               alert("Zayıf");
+                durum="Zayıf";
+                document.getElementById("sonuc").classList.add("kirmizi");
+                document.getElementById("sonuc").classList.remove("yesil");
+                document.getElementById("sonuc").classList.remove("sari");
+                document.getElementById("sonuc").classList.remove("turuncu");
+                document.getElementById("sonuc").classList.remove("kahve");
+            }
+            else if(50<=ortalama && ortalama<55){
+                alert("Geçer");
+                durum="Geçer";
+                document.getElementById("sonuc").classList.add("kahve");
+                document.getElementById("sonuc").classList.remove("yesil");
+                document.getElementById("sonuc").classList.remove("kirmizi");
+                document.getElementById("sonuc").classList.remove("sari");
+                document.getElementById("sonuc").classList.remove("turuncu");
+            }
+            else if(55<=ortalama && ortalama<70){
+                alert("Orta");
+                durum="Orta";
+                document.getElementById("sonuc").classList.add("turuncu");
+                document.getElementById("sonuc").classList.remove("yesil");
+                document.getElementById("sonuc").classList.remove("kirmizi");
+                document.getElementById("sonuc").classList.add("kahve");
+                document.getElementById("sonuc").classList.remove("sari");
+            }
+            else if(70<=ortalama && ortalama<85){
+
+                alert("İyi");
+                durum="İyi";
+                document.getElementById("sonuc").classList.add("sari");
+                document.getElementById("sonuc").classList.remove("yesil");
+                document.getElementById("sonuc").classList.remove("kirmizi");
+                document.getElementById("sonuc").classList.add("kahve");
+                document.getElementById("sonuc").classList.remove("turuncu");
+            }
+           else if(85<=ortalama && ortalama<=100){
+            alert("pekiyi");
+                durum="pekiyi";
+                document.getElementById("sonuc").classList.add("yesil");
+                document.getElementById("sonuc").classList.remove("kirmizi");
+                document.getElementById("sonuc").classList.remove("sari");
+                document.getElementById("sonuc").classList.add("kahve");
+                document.getElementById("sonuc").classList.remove("turuncu");
+            }
+            document.getElementById("sonuc").innerHTML=durum;
+        }
+    </script>
+
+</body>
+</html>
